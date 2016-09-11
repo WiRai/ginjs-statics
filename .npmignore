@@ -1,0 +1,13 @@
+src
+doc
+.npmignore
+.babelrc
+.eslintrc
+.flowconfig
+jsdoc.json
+__tests__
+.travis.yml
+coverage
+.codeclimate
+.csslintrc
+.eslintignore
