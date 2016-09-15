@@ -11,3 +11,5 @@ coverage
 .codeclimate
 .csslintrc
 .eslintignore
+mocha.opts
+
