@@ -3,4 +3,4 @@ node_js:
   - "6"
   - "5"
 before_install:
-  - npm install ginjs
+  - npm install -g ginjs
