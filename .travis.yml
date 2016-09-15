@@ -1,3 +1,5 @@
+env:
+  - NODE_PATH=/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript
 language: node_js
 node_js:
   - "6"
