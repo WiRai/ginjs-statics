@@ -3,4 +3,4 @@ node_js:
   - "6"
   - "5"
 before_install:
-  - sudo npm install -g ginjs
+  - npm install ginjs
