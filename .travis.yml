@@ -1,5 +1,5 @@
 env:
-  - NODE_PATH=/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript
+  - NODE_PATH=/home/travis/.nvm/versions/node/v6.6.0/lib/node_modules:/home/travis/.nvm/versions/node/v5.12.0/lib/node_modules
 language: node_js
 node_js:
   - "6"
