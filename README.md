@@ -5,6 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/WiRai/ginjs-statics/badges/gpa.svg)](https://codeclimate.com/github/WiRai/ginjs-statics)
 [![Dependency Status](https://david-dm.org/wirai/ginjs-statics.svg)](https://david-dm.org/wirai/ginjs-statics)
 [![devDependency Status](https://david-dm.org/wirai/ginjs-statics/dev-status.svg)](https://david-dm.org/wirai/ginjs-statics?type=dev)
+[![peerDependencies Status](https://david-dm.org/wirai/ginjs-statics/peer-status.svg)](https://david-dm.org/wirai/ginjs-statics?type=peer)
 
 A static file feature for ginjs.
 
