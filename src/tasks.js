@@ -14,7 +14,6 @@ module.exports = tasks;
  */
 tasks.introduce_collectStatics = () => {
   const getFeatureList = require('ginjs').featureman.getFeatureList;
-  // noFlow
   const context = require('ginjs').context;
   const featureList = getFeatureList();
   featureList.forEach((elem: Object) => {

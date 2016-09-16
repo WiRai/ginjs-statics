@@ -1,8 +1,6 @@
-env:
-  - NODE_PATH=/home/travis/.nvm/versions/node/v6.6.0/lib/node_modules:/home/travis/.nvm/versions/node/v5.12.0/lib/node_modules
 language: node_js
 node_js:
   - "6"
   - "5"
 before_install:
-  - npm install -g ginjs
+  - npm install ginjs
