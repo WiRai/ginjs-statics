@@ -1,18 +1,16 @@
-const expect = require('chai').expect;
+const expect = require('chai').expect; // eslint-disable-line import/no-extraneous-dependencies
 const fs = require('fs-extra');
 const path = require('path');
 const os = require('os');
 let tasks = require('ginjs').tasks;
 
-const skelPath = require.resolve('ginjs').split(path.sep);
-
-describe('collectStatics introducement', () => {
-  it('Copy-overrides content of dirs called \'statics\' in each feature root to STATIC_DIR from context.json.', () => {
+describe('collectStatics introducement', () => { // eslint-disable-line no-undef
+  it('Copy-overrides content of dirs called \'statics\' in each feature root to STATIC_DIR from context.json.', () => { // eslint-disable-line no-undef
     process.env.PRODUCTLINE_DIR = path.join(os.tmpdir(), '_ginjs-test-productline');
     process.env.PATH = `${process.env.PRODUCTLINE_DIR}/node_modules/.bin:${process.env.PATH}`;
     process.env.NODE_PATH = `${process.env.PRODUCTLINE_DIR}/features:${process.env.PRODUCTLINE_DIR}/node_modules:${process.env.NODE_PATH}`;
     // Tp be sure new NODE_PATH is used:
-    require('module').Module._initPaths();
+    require('module').Module._initPaths(); // eslint-disable-line no-underscore-dangle, global-require
     process.chdir(os.tmpdir());
     tasks.createProductLine('_ginjs-test-productline');
     process.env.PRODUCT_DIR = path.join(process.env.PRODUCTLINE_DIR, 'products', 'default');
@@ -31,6 +29,7 @@ describe('collectStatics introducement', () => {
       bar: true,
     });
     fs.writeJSONSync(path.join(process.env.PRODUCT_DIR, 'features.json'), [
+      'ginjs',
       require.resolve('../index'), // ginjs-statics
       'gap',
       'gap2',
@@ -40,28 +39,29 @@ describe('collectStatics introducement', () => {
      * of tasks module, but we add features later dynamically.
      * To get those features composed we need this pattern...
      */
-    delete require.cache[require.resolve('ginjs')];
-    delete require.cache[require.resolve('ginjs/lib/tasks')];
-    /* getContextTemplate used by updateContext is in functions,
-     * we need to reload it for new composition
-     */
-    delete require.cache[require.resolve('ginjs/lib/functions')];
-    tasks = require('ginjs').tasks;
+    Object.keys(require.cache).forEach((elem: string) => {
+      delete require.cache[elem];
+    });
+    tasks = require('ginjs').tasks; // eslint-disable-line global-require
     tasks.updateContext();
     // reload context to get STATIC_DIR
-    delete require.cache[require.resolve('ginjs')];
-    delete require.cache[require.resolve('ginjs/lib/context')];
+    Object.keys(require.cache).forEach((elem: string) => {
+      delete require.cache[elem];
+    });
     tasks.collectStatics();
-    const staticDir = require('ginjs').context.STATIC_DIR;
-    expect(
+    const staticDir = require('ginjs').context.STATIC_DIR; // eslint-disable-line global-require
+    expect(// eslint-disable-line no-unused-expressions
       fs.readJSONSync(path.join(staticDir, 'a.json')).bar &&
-      fs.readJSONSync(path.join(staticDir, 'a.json')).foo === undefined
+      fs.readJSONSync(path.join(staticDir, 'a.json')).foo === undefined,
     ).to.be.true;
-    expect(
-      fs.readJSONSync(path.join(staticDir, 'b.json')).foo
+    expect(// eslint-disable-line no-unused-expressions
+      fs.readJSONSync(path.join(staticDir, 'b.json')).foo,
     ).to.be.true;
     fs.removeSync(process.env.PRODUCTLINE_DIR);
     delete process.env.PRODUCTLINE_DIR;
     delete process.env.PRODUCT_DIR;
+    Object.keys(require.cache).forEach((elem: string) => {
+      delete require.cache[elem];
+    });
   });
 });

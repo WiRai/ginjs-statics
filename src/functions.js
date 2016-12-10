@@ -1,5 +1,6 @@
 /* @flow */
 const path = require('path');
+
 const functions = {};
 
 module.exports = functions;
@@ -7,6 +8,7 @@ module.exports = functions;
 /**
  * @function refine_getContextTemplate
  * @description Refines getContextTemplate to add a STATIC_DIR key.
+ * @param {Function} original - Old implementation.
  * @returns {void} Void.
  */
 functions.refine_getContextTemplate = (original: Function): Function => (): Object => {
