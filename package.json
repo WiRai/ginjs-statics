@@ -46,6 +46,6 @@
     "fs-extra": "^1.0.0"
   },
   "peerDependencies": {
-    "ginjs": "0.1.x"
+    "ginjs": "0.2.x"
   }
 }

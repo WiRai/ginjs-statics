@@ -15,8 +15,8 @@ functions.refine_getContextTemplate = (original: Function): Function => (): Obje
   if (!process.env.PRODUCT_DIR) {
     throw new Error('PRODUCT_DIR not set.');
   }
-  const context = original();
-  // noFlow
-  context.STATIC_DIR = path.join(process.env.PRODUCT_DIR, 'DATA', 'statics');
-  return context;
+  const context = require('ginjs').context; // eslint-disable-line global-require
+  const contextTemplate = original();
+  contextTemplate.STATIC_DIR = path.join(context.DATA_DIR || contextTemplate.DATA_DIR, 'statics');
+  return contextTemplate;
 };
